@@ -16,6 +16,7 @@ UTM-K 좌표계 입력만 허용
 ## 호출 스택 예시
 GET
 `/api/v1/subway/near?resultCnt=5&x=202172.4457&y=452966.9537`
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <stationInfo>
     <row>
@@ -37,3 +38,4 @@ GET
         <ord>1</ord>
     </row>
 </statinInfo>
+```
