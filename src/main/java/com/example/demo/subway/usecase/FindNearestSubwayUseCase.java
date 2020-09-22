@@ -1,11 +1,10 @@
-package com.example.demo.board.usecase;
+package com.example.demo.subway.usecase;
 
-import com.example.demo.board.domain.StationInfoDTO;
-import com.example.demo.board.domain.Subway;
-import com.example.demo.board.domain.SubwayDTO;
-import com.example.demo.board.domain.SubwayInputDTO;
-import com.example.demo.board.infra.SubwayRepository;
-import lombok.RequiredArgsConstructor;
+import com.example.demo.subway.domain.StationInfoDTO;
+import com.example.demo.subway.domain.Subway;
+import com.example.demo.subway.domain.SubwayDTO;
+import com.example.demo.subway.domain.SubwayInputDTO;
+import com.example.demo.subway.infra.SubwayRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

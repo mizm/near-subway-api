@@ -1,4 +1,4 @@
-package com.example.demo.board.ui;
+package com.example.demo.subway.ui;
 
 public class ErrorResponse {
     String code;

@@ -1,8 +1,6 @@
-package com.example.demo.board.domain;
+package com.example.demo.subway.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.xml.bind.annotation.XmlAccessType;

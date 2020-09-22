@@ -1,15 +1,9 @@
-package com.example.demo.board.domain;
+package com.example.demo.subway.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.util.List;
 
 @Entity
 @Getter

@@ -1,11 +1,8 @@
-package com.example.demo.board.ui;
+package com.example.demo.subway.ui;
 
-import com.example.demo.board.domain.StationInfoDTO;
-import com.example.demo.board.domain.Subway;
-import com.example.demo.board.domain.SubwayDTO;
-import com.example.demo.board.domain.SubwayInputDTO;
-import com.example.demo.board.infra.SubwayRepository;
-import com.example.demo.board.usecase.FindNearestSubwayUseCase;
+import com.example.demo.subway.domain.SubwayInputDTO;
+import com.example.demo.subway.infra.SubwayRepository;
+import com.example.demo.subway.usecase.FindNearestSubwayUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Slf4j
 @RestController
