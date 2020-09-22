@@ -39,3 +39,6 @@ GET
     </row>
 </statinInfo>
 ```
+
+## 200922
+- directory 변경 (domain 변경 board -> subway)
