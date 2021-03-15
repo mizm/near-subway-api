@@ -1,12 +1,10 @@
 package com.example.demo.subway.usecase;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.subway.domain.StationInfoDto;
@@ -19,28 +17,28 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public class FindNearestSubwayUseCase {
+public class FindNearestSubwayUseCase implements FindNearestSubwayInterface {
 
-	final private SubwayRepository subwayRepository;
-	private final ModelMapper modelMapper;
+	private SubwayRepository subwayRepository;
+	private ModelMapper modelMapper;
 
-	@Autowired
 	public FindNearestSubwayUseCase(SubwayRepository subwayRepository, ModelMapper modelMapper) {
 		this.subwayRepository = subwayRepository;
 		this.modelMapper = modelMapper;
 	}
 
-	public StationInfoDto findNearestSubway(SubwayInputDto subwayInputDTO) {
+	@Override
+	public StationInfoDto findNearestSubway(SubwayInputDto subwayInputDto) {
 		List<Subway> preResult = new ArrayList<Subway>();
 		preResult = subwayRepository.findAllByXBetweenAndYBetween(
-			subwayInputDTO.getMinX(),
-			subwayInputDTO.getMaxX(),
-			subwayInputDTO.getMinY(),
-			subwayInputDTO.getMaxY()
+			subwayInputDto.getMinX(),
+			subwayInputDto.getMaxX(),
+			subwayInputDto.getMinY(),
+			subwayInputDto.getMaxY()
 		);
-		double x = subwayInputDTO.getX();
-		double y = subwayInputDTO.getY();
-		Collections.sort(preResult, new Comparator<Subway>() {
+		double x = subwayInputDto.getX();
+		double y = subwayInputDto.getY();
+		preResult.sort(new Comparator<Subway>() {
 			@Override
 			public int compare(Subway s1, Subway s2) {
 				if (s1.getDistance(x, y) < s2.getDistance(x, y)) {
@@ -56,8 +54,8 @@ public class FindNearestSubwayUseCase {
 			dto.setOrd(i);
 			result.add(dto);
 		}
-		StationInfoDto stationInfoDTO = new StationInfoDto();
-		stationInfoDTO.setRows(result);
-		return stationInfoDTO;
+		StationInfoDto stationInfoDto = new StationInfoDto();
+		stationInfoDto.setRows(result);
+		return stationInfoDto;
 	}
 }

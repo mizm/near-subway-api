@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@SuppressWarnings({"checkstyle:MemberName", "checkstyle:RegexpMultiline"})
 @Getter
 @Setter
 @NoArgsConstructor

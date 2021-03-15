@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.subway.domain.SubwayInputDto;
 import com.example.demo.subway.infra.SubwayRepository;
-import com.example.demo.subway.usecase.FindNearestSubwayUseCase;
+import com.example.demo.subway.usecase.FindNearestSubwayInterface;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,20 +20,20 @@ public class BoardRestController {
 
 	private SubwayRepository subwayRepository;
 	private ModelMapper modelMapper;
-	private FindNearestSubwayUseCase findNearestSubwayUseCase;
+	private FindNearestSubwayInterface findNearestSubwayInterface;
 
 	public BoardRestController(SubwayRepository subwayRepository, ModelMapper modelMapper,
-		FindNearestSubwayUseCase findNearestSubwayUseCase) {
+		FindNearestSubwayInterface findNearestSubwayInterface) {
 		this.subwayRepository = subwayRepository;
 		this.modelMapper = modelMapper;
-		this.findNearestSubwayUseCase = findNearestSubwayUseCase;
+		this.findNearestSubwayInterface = findNearestSubwayInterface;
 	}
 
 	//이미 존재헀던 api가 get 방식이므로 어쩔수 없이 get 방식으로
 	//mapping에는 풀 경로를 다 적는게 좋음
 	@GetMapping(value = "/api/v1/subway/near", produces = MediaType.APPLICATION_XML_VALUE)
 	ResponseEntity nearSubways(SubwayInputDto subwayInputDto) {
-		return new ResponseEntity<>(findNearestSubwayUseCase.findNearestSubway(subwayInputDto), HttpStatus.OK);
+		return new ResponseEntity<>(findNearestSubwayInterface.findNearestSubway(subwayInputDto), HttpStatus.OK);
 	}
 
 	@ExceptionHandler(BadRequestException.class)
