@@ -1,6 +1,5 @@
 package com.example.demo.subway.ui;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.subway.domain.SubwayInputDto;
-import com.example.demo.subway.infra.SubwayRepository;
 import com.example.demo.subway.usecase.FindNearestSubwayInterface;
 
 import lombok.extern.slf4j.Slf4j;
@@ -18,14 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class BoardRestController {
 
-	private SubwayRepository subwayRepository;
-	private ModelMapper modelMapper;
 	private FindNearestSubwayInterface findNearestSubwayInterface;
 
-	public BoardRestController(SubwayRepository subwayRepository, ModelMapper modelMapper,
-		FindNearestSubwayInterface findNearestSubwayInterface) {
-		this.subwayRepository = subwayRepository;
-		this.modelMapper = modelMapper;
+	public BoardRestController(FindNearestSubwayInterface findNearestSubwayInterface) {
 		this.findNearestSubwayInterface = findNearestSubwayInterface;
 	}
 

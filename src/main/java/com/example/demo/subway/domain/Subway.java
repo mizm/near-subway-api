@@ -1,5 +1,6 @@
 package com.example.demo.subway.domain;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,11 +24,11 @@ public class Subway {
 	private String subwayId;
 	private String subwayNm;
 
-	private double x;
-	private double y;
+	@Embedded
+	private Point point;
 
 	public double getDistance(double x1, double y1) {
-		return Math.sqrt(Math.pow((x1 - this.x), 2) + Math.pow((y1 - this.y), 2));
+		return Math.sqrt(Math.pow((x1 - this.getPoint().getX()), 2) + Math.pow((y1 - this.getPoint().getY()), 2));
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.example.demo.subway.domain;
 
+import javax.persistence.Embedded;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +14,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SubwayInputDto {
 	int resultCnt;
-	double x;
-	double y;
-
+	@Embedded
+	private Point point;
     /* 여기에 살짝 범위를 추가해줌 0.005
      2km 범위를 탐색하는 것이 목적이라면, 좌표값으로 대략 범위 +- 0.022 lng x
     위에는 lat,lng 에서 적용 되는 방식(wgs84)
@@ -35,26 +36,26 @@ public class SubwayInputDto {
      */
 
 	public double getMinX() {
-		return this.x - 1000;
+		return this.getPoint().getX() - 1000;
 	}
 
 	public double getMaxX() {
-		return this.x + 1000;
+		return this.getPoint().getX() + 1000;
 	}
 
 	public double getMinY() {
-		return this.y - 1000;
+		return this.getPoint().getY() - 1000;
 	}
 
 	public double getMaxY() {
-		return this.y + 1000;
+		return this.getPoint().getY() + 1000;
 	}
 
 	public double getX() {
-		return this.x;
+		return this.getPoint().getX();
 	}
 
 	public double getY() {
-		return this.y;
+		return this.getPoint().getY();
 	}
 }
