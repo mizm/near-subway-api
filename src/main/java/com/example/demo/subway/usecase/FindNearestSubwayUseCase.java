@@ -30,7 +30,7 @@ public class FindNearestSubwayUseCase implements FindNearestSubwayInterface {
 	@Override
 	public StationInfoDto findNearestSubway(SubwayInputDto subwayInputDto) {
 		List<Subway> preResult = new ArrayList<Subway>();
-		preResult = subwayRepository.findAllByXBetweenAndYBetween(
+		preResult = subwayRepository.findAllByPointXBetweenAndPointYBetween(
 			subwayInputDto.getMinX(),
 			subwayInputDto.getMaxX(),
 			subwayInputDto.getMinY(),
@@ -50,6 +50,9 @@ public class FindNearestSubwayUseCase implements FindNearestSubwayInterface {
 		});
 		List<SubwayDto> result = new ArrayList<SubwayDto>();
 		for (int i = 0; i < preResult.size(); i++) {
+			// 210407
+			if (i == 2 || preResult.get(i).getDistance(subwayInputDto.getX(), subwayInputDto.getY()) > 1000)
+				break;
 			SubwayDto dto = modelMapper.map(preResult.get(i), SubwayDto.class);
 			dto.setOrd(i);
 			result.add(dto);

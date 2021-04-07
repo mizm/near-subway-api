@@ -7,12 +7,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @SuppressWarnings("checkstyle:MemberName")
 @Getter
 @Setter
 @XmlRootElement(name = "row")
 @XmlAccessorType(XmlAccessType.FIELD)
+@ToString
 public class SubwayDto {
 	private String statnId;
 	private String statnNm;
