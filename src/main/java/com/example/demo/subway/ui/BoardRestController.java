@@ -26,8 +26,6 @@ public class BoardRestController {
 	//mapping에는 풀 경로를 다 적는게 좋음
 	@GetMapping(value = "/api/v1/subway/near", produces = MediaType.APPLICATION_XML_VALUE)
 	ResponseEntity nearSubways(SubwayInputDto subwayInputDto) {
-		System.out.println("BoardRestController.nearSubways");
-		System.out.println("subwayInputDto = " + subwayInputDto);
 		return new ResponseEntity<>(findNearestSubwayInterface.findNearestSubway(subwayInputDto), HttpStatus.OK);
 	}
 
